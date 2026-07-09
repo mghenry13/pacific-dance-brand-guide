@@ -81,6 +81,17 @@
   });
 
   window.addEventListener('resize', fit, { passive: true });
+
+  /* deep links: #<slide id> opens that slide (e.g. #q1, #hub) */
+  function gotoHash() {
+    const id = location.hash.slice(1);
+    if (!id) return;
+    const idx = slides.findIndex(s => s.id === id);
+    if (idx >= 0) { show(idx); killHint(); }
+  }
+  window.addEventListener('hashchange', gotoHash);
+
   fit();
   render();
+  gotoHash();
 })();
