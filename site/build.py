@@ -95,8 +95,18 @@ FOOTER = f"""<footer id="footer">
 </body>
 </html>"""
 
-def page_hero(eyebrow, h1, sub=""):
+def page_hero(eyebrow, h1, sub="", bg=None, bg_alt=""):
     p = f"<p>{sub}</p>" if sub else ""
+    if bg:
+        return f"""<section class="page-hero lp-hero">
+  <div class="hero-bg"><img src="{bg}" alt="{bg_alt}"></div>
+  <div class="wrap" style="position:relative">
+    <div class="eyebrow">{eyebrow}</div>
+    <h1>{h1}</h1>
+    {p}
+  </div>
+</section>
+"""
     return f"""<section class="page-hero">
   <div class="wrap">
     <div class="eyebrow">{eyebrow}</div>
@@ -246,6 +256,7 @@ def enroll_page():
         "Free Class & Enrollment",
         "The first class is free",
         "That's usually all it takes. Tell us a little about your dancer, and Lori will personally help you find the right class — no commitment, no card.",
+        bg="../assets/img/ba-studio-after.jpg", bg_alt="Inside one of Pacific Dance's ten studios",
     ) + f"""
 <section class="block">
   <div class="wrap twocol form-first">
