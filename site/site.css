@@ -315,3 +315,10 @@ details.acc .inner li { margin-bottom: 6px; }
   background: linear-gradient(90deg, rgba(0,23,48,.88) 0%, rgba(0,23,48,.72) 55%, rgba(0,23,48,.45) 100%); }
 .lp-hero .hero-bg img { position: relative; }
 .lp-hero .wrap { z-index: 2; }
+
+/* Lori promise strip inside form cards */
+.lori-promise { margin-top: 16px; background: var(--mist); border-left: 3px solid var(--sky);
+  border-radius: 8px; padding: 14px 16px; display: flex; gap: 14px; align-items: center; }
+.lori-promise img { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; object-position: 50% 25%; flex-shrink: 0; }
+.lori-promise p { margin: 0; font-size: .86rem; line-height: 1.5; color: #24405e; }
+.lori-promise b { color: var(--navy); }
