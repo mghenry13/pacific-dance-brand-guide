@@ -232,19 +232,22 @@ details.acc .inner li { margin-bottom: 6px; }
 .feeline { padding: 6px 0; font-size: .95rem; }
 .feeline b { color: var(--navy); }
 
-/* bio grid */
-.biogrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.bio { background: #fff; border: 1px solid rgba(0,36,76,.09); border-radius: var(--radius); overflow: hidden; }
-.bio .ph { aspect-ratio: 1/1.08; overflow: hidden; background: var(--mist); }
-.bio .ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
-.bio .ph .mono { width: 100%; height: 100%; display: grid; place-items: center;
-  font-family: var(--display); font-size: 2.6rem; color: var(--royal); background: rgba(0,168,229,.1); }
-.bio .nm { padding: 14px 16px 4px; font-weight: 700; font-size: .98rem; }
-.bio .rl { padding: 0 16px; color: var(--slate); font-size: .78rem; }
-.bio details { padding: 8px 16px 14px; }
-.bio details summary { cursor: pointer; font-size: .8rem; font-weight: 600; color: var(--royal); list-style: none; }
-.bio details summary::-webkit-details-marker { display: none; }
-.bio details p { font-size: .82rem; color: #24405e; margin-top: 8px; line-height: 1.55; }
+/* instructor rows (alternating image/text sections) */
+.instr-list { max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px; }
+.instr-row { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: center; }
+.instr-row.flip { grid-template-columns: 1fr 280px; }
+.instr-row.flip .iph { order: 2; }
+.instr-row .iph img { width: 100%; aspect-ratio: 1/1.1; object-fit: cover; object-position: 50% 22%; border-radius: var(--radius); }
+.instr-row .iph .mono { width: 100%; aspect-ratio: 1/1.1; display: grid; place-items: center; border-radius: var(--radius);
+  font-family: var(--display); font-size: 3rem; color: var(--royal); background: rgba(0,168,229,.1); }
+.instr-row h3 { font-size: 1.5rem; }
+.instr-row .irole { font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--royal); margin: 4px 0 10px; }
+.instr-row p { font-size: .93rem; color: #24405e; line-height: 1.6; margin-bottom: 8px; }
+@media (max-width: 980px) {
+  .instr-row, .instr-row.flip { grid-template-columns: 1fr; gap: 18px; }
+  .instr-row.flip .iph { order: 0; }
+  .instr-row .iph { max-width: 320px; }
+}
 
 /* password gate mock */
 .gate { background: var(--navy); color: #fff; border-radius: 14px; padding: 40px; text-align: center; }

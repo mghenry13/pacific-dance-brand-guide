@@ -330,8 +330,7 @@ def enroll_page():
 def about_page():
     instructors = json.load(open('/tmp/instructors.json'))
     cards = ""
-    bio_accs = ""
-    for ins in instructors:
+    for idx, ins in enumerate(instructors):
         name = ins['name'].split(' - ')[0]
         role = "Owner / Director" if "Owner" in ins['name'] else "Instructor"
         photo = ins.get('photo')
@@ -341,9 +340,9 @@ def about_page():
             initials = "".join(w[0] for w in name.split()[:2])
             ph = f'<div class="mono">{initials}</div>'
         paras = ins['paras'] or ["Bio coming soon."]
-        full = "".join(f"<p>{p}</p>" for p in paras[:3])
-        cards += f"""<div class="bio"><div class="ph">{ph}</div><div class="nm">{name}</div><div class="rl">{role}</div></div>\n"""
-        bio_accs += f'<details class="acc"><summary>{name}</summary><div class="inner">{full}</div></details>\n' 
+        full = "".join(f"<p>{p}</p>" for p in paras[:2])
+        flip = " flip" if idx % 2 else ""
+        cards += f"""<div class="instr-row{flip}"><div class="iph">{ph}</div><div><h3>{name}</h3><div class="irole">{role}</div>{full}</div></div>\n"""
     return head("About — Pacific Dance, Irvine", "Training dancers since 1994. Meet the instructors behind Irvine's home for dance.") + nav("about.html") + page_hero(
         "About Pacific Dance",
         "Training dancers since 1994",
@@ -404,11 +403,8 @@ def about_page():
       <h2>Meet the instructors</h2>
       <p>Working professionals from the Orange County and Los Angeles dance worlds — who know every dancer by name.</p>
     </div>
-    <div class="biogrid">
+    <div class="instr-list">
 {cards}    </div>
-    <div style="max-width:820px; margin:44px auto 0">
-      <div class="head-c" style="margin-bottom:24px"><h2 style="font-size:1.6rem">The full bios</h2></div>
-{bio_accs}    </div>
   </div>
 </section>
 """ + cta_band("Come meet us in person.", "The first class is free — and the viewing windows mean you see every minute of it.") + FOOTER
