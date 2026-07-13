@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedules — Pacific Dance, Irvine</title>
-<meta name="description" content="Dance classes for ages 2–92 in Irvine, CA. Filter the schedule by style, age, and day.">
+<meta name="description" content="Dance classes for ages 2–92 in Irvine, CA — browse the schedule by style.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Podkova:wght@400;500;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -22,55 +22,60 @@
   <div class="wrap">
     <div class="eyebrow">Classes & Schedules</div>
     <h1>Find the right class</h1>
-    <p>Eight styles, every level, seven days a week — filter by style or day. Ages 2–92, all ability levels and interests welcome.</p>
+    <p>Eight styles, every level, seven days a week — open a style to see its classes and times. Ages 2–92, all ability levels and interests welcome.</p>
   </div>
 </section>
 
 <section class="block">
-  <div class="wrap">
-    <div class="fl-label">Style</div>
-    <div class="filters" id="f-style"><button class="chip-f on" data-f="all">All styles</button><button class="chip-f" data-f="combo">Combos (ages 2–7)</button><button class="chip-f" data-f="ballet">Ballet</button><button class="chip-f" data-f="jazz">Jazz</button><button class="chip-f" data-f="lyrical">Lyrical / Contemporary</button><button class="chip-f" data-f="tap">Tap</button><button class="chip-f" data-f="hiphop">Hip Hop</button><button class="chip-f" data-f="kpop">K-Pop</button><button class="chip-f" data-f="acro">Acro</button><button class="chip-f" data-f="technique">Technique</button><button class="chip-f" data-f="adult">Adult</button></div>
-    <div class="fl-label">Day</div>
-    <div class="filters" id="f-day"><button class="chip-f on" data-d="All days">All days</button><button class="chip-f" data-d="Mon">Mon</button><button class="chip-f" data-d="Tue">Tue</button><button class="chip-f" data-d="Wed">Wed</button><button class="chip-f" data-d="Thu">Thu</button><button class="chip-f" data-d="Fri">Fri</button><button class="chip-f" data-d="Sat">Sat</button><button class="chip-f" data-d="Sun">Sun</button></div>
-    <div class="sample-note"><b>Mock note:</b> this is a representative sample of the schedule (about a third of it). The launch version lists all 100+ classes from the July 2026 schedule — same filters, same layout.</div>
-    <table class="sched">
-      <thead><tr><th>Class</th><th>Ages</th><th>Days &amp; times</th></tr></thead>
-      <tbody id="schedbody">
-<tr data-style="combo" data-days="Sun"><td class="cls">Mommy & Me</td><td>18 mo – 3 yrs</td><td>Sun 9:00 AM</td></tr>
-<tr data-style="combo ballet tap" data-days="Fri Sat Sun Tue"><td class="cls">Ballet/Tap Combo</td><td>3–5</td><td>Tue 4:30 · Fri 3:30 · Sat 9:00 · Sat 10:00 · Sun 9:00</td></tr>
-<tr data-style="combo ballet lyrical" data-days="Sat Tue Wed"><td class="cls">Ballet/Lyrical Combo</td><td>4–6</td><td>Tue 4:30 · Wed 3:30 · Sat 10:00</td></tr>
-<tr data-style="combo jazz hiphop" data-days="Fri Mon"><td class="cls">Pre-Jazz Hop Tumble</td><td>4–6</td><td>Mon 4:30 · Fri 4:30</td></tr>
-<tr data-style="hiphop" data-days="Thu Wed"><td class="cls">Pre-Hip Hop</td><td>5–7</td><td>Wed 3:45 · Thu 4:00</td></tr>
-<tr data-style="ballet" data-days="Mon"><td class="cls">Pre-Ballet</td><td>5–7</td><td>Mon 3:45</td></tr>
-<tr data-style="ballet" data-days="Fri Mon Sat Wed"><td class="cls">Ballet I</td><td>6 & up</td><td>Mon 5:00 · Wed 4:30 · Fri 4:30 · Sat 10:00</td></tr>
-<tr data-style="ballet" data-days="Mon Sat Tue Wed"><td class="cls">Ballet II</td><td>by level</td><td>Mon 5:30 · Tue 5:30 · Wed 6:30 · Sat 10:00</td></tr>
-<tr data-style="ballet" data-days="Thu Tue"><td class="cls">Ballet III</td><td>by level</td><td>Tue 4:30 · Thu 6:30</td></tr>
-<tr data-style="ballet" data-days="Fri Wed"><td class="cls">Pre-Pointe</td><td>by level</td><td>Wed 5:30 · Fri 5:30</td></tr>
-<tr data-style="ballet adult" data-days="Thu"><td class="cls">Ballet — Beginning</td><td>Adult</td><td>Thu 8:30 PM</td></tr>
-<tr data-style="jazz" data-days="Sat Sun Tue"><td class="cls">Jazz I</td><td>6 & up</td><td>Tue 5:30 · Sat 9:00 · Sun 10:00</td></tr>
-<tr data-style="jazz lyrical" data-days="Thu Tue"><td class="cls">Jazz/Lyrical I</td><td>8 & up</td><td>Tue 3:30 · Thu 3:30</td></tr>
-<tr data-style="jazz" data-days="Mon"><td class="cls">Jazz/Musical Theatre II</td><td>by level</td><td>Mon 5:00</td></tr>
-<tr data-style="lyrical" data-days="Mon Wed"><td class="cls">Lyrical I</td><td>8 & up</td><td>Mon 5:30 · Wed 4:00</td></tr>
-<tr data-style="lyrical" data-days="Tue"><td class="cls">Lyrical — Advanced</td><td>by level</td><td>Tue 7:30</td></tr>
-<tr data-style="lyrical" data-days="Sat Tue"><td class="cls">Contemporary II</td><td>10 & up</td><td>Tue 6:30 · Sat 12:00</td></tr>
-<tr data-style="tap" data-days="Thu"><td class="cls">Tap I</td><td>6 & up</td><td>Thu 5:30</td></tr>
-<tr data-style="tap adult" data-days="Mon Wed"><td class="cls">Tap I</td><td>Teen/Adult</td><td>Mon 7:30 · Wed 1:00</td></tr>
-<tr data-style="technique" data-days="Sat Sun Thu Wed"><td class="cls">Turns & Technique I-B/II</td><td>by level</td><td>Wed 5:00 · Thu 4:30 · Sat 11:00 · Sun 12:00</td></tr>
-<tr data-style="hiphop" data-days="Thu Wed"><td class="cls">Hip Hop — Beginning</td><td>6 & up</td><td>Wed 4:30 · Wed 5:30 · Thu 6:00</td></tr>
-<tr data-style="hiphop" data-days="Mon Tue Wed"><td class="cls">Hip Hop — Beginning</td><td>10 & up</td><td>Mon 5:30 · Tue 5:30 · Wed 7:30</td></tr>
-<tr data-style="hiphop adult" data-days="Mon Wed"><td class="cls">Hip Hop — Beginning</td><td>Adult</td><td>Mon 6:30 · Wed 4:30</td></tr>
-<tr data-style="hiphop" data-days="Thu"><td class="cls">Hip Hop — Advanced</td><td>by level</td><td>Thu 7:00</td></tr>
-<tr data-style="kpop" data-days="Sat Thu Wed"><td class="cls">K-Pop — Beginning</td><td>6 & up</td><td>Wed 5:30 · Thu 4:30 · Sat 11:00</td></tr>
-<tr data-style="kpop" data-days="Fri Sat Thu Tue"><td class="cls">K-Pop — Beginning</td><td>10 & up</td><td>Tue 5:30 · Thu 7:30 · Fri 4:30 · Sat 1:00</td></tr>
-<tr data-style="kpop adult" data-days="Tue"><td class="cls">K-Pop — Beginning</td><td>Adult</td><td>Tue 8:30 PM</td></tr>
-<tr data-style="acro" data-days="Mon Sat Thu Tue Wed"><td class="cls">Acro for Dance — Beginning</td><td>7 & up</td><td>Mon 4:30 · Tue 5:30 · Wed 5:30 · Thu 5:30 · Sat 11:00</td></tr>
-<tr data-style="acro" data-days="Mon"><td class="cls">Acro for Dance — Advanced</td><td>12 & up</td><td>Mon 8:00</td></tr>
-<tr data-style="jazz" data-days="Sat"><td class="cls">Musical Theatre</td><td>7 & up</td><td>Sat 10:00</td></tr>
-<tr data-style="technique adult" data-days="Sat"><td class="cls">Stretch & Conditioning</td><td>10 – Adult</td><td>Sat 11:00</td></tr>
-<tr data-style="technique" data-days="Fri"><td class="cls">Pom</td><td>12 & up</td><td>Fri 5:30</td></tr>
-      </tbody>
-    </table>
-    <p id="noresults" style="display:none; text-align:center; color:var(--slate); padding:26px">No classes match those filters — try widening your search.</p>
+  <div class="wrap" style="max-width:880px">
+    <div class="sample-note"><b>Mock note:</b> a representative sample (about a third of the schedule). At launch, every style below lists all of its classes from the July 2026 schedule — and the studio can update times right in Squarespace, no code.</div>
+    <details class="acc" open><summary>Combo Classes · Ages 2–7</summary><div class="inner"><p style="color:var(--slate); font-size:.88rem; margin-bottom:12px">One class, two or three styles — the classic first classes.</p><div class="srow"><div><b>Mommy & Me</b><span class="sages"> · Ages 18 mo – 3 yrs</span></div><div class="stimes">Sun 9:00 AM</div></div>
+<div class="srow"><div><b>Ballet/Tap Combo</b><span class="sages"> · Ages 3–5</span></div><div class="stimes">Tue 4:30 · Fri 3:30 · Sat 9:00 · Sat 10:00 · Sun 9:00</div></div>
+<div class="srow"><div><b>Ballet/Lyrical Combo</b><span class="sages"> · Ages 4–6</span></div><div class="stimes">Tue 4:30 · Wed 3:30 · Sat 10:00</div></div>
+<div class="srow"><div><b>Pre-Jazz Hop Tumble</b><span class="sages"> · Ages 4–6</span></div><div class="stimes">Mon 4:30 · Fri 4:30</div></div>
+<div class="srow"><div><b>Pre-Hip Hop</b><span class="sages"> · Ages 5–7</span></div><div class="stimes">Wed 3:45 · Thu 4:00</div></div>
+<div class="srow"><div><b>Pre-Ballet</b><span class="sages"> · Ages 5–7</span></div><div class="stimes">Mon 3:45</div></div>
+</div></details>
+<details class="acc"><summary>Ballet</summary><div class="inner"><p style="color:var(--slate); font-size:.88rem; margin-bottom:12px">The foundation — through pointe.</p><div class="srow"><div><b>Ballet I</b><span class="sages"> · Ages 6 & up</span></div><div class="stimes">Mon 5:00 · Wed 4:30 · Fri 4:30 · Sat 10:00</div></div>
+<div class="srow"><div><b>Ballet II</b><span class="sages"> · Ages by level</span></div><div class="stimes">Mon 5:30 · Tue 5:30 · Wed 6:30 · Sat 10:00</div></div>
+<div class="srow"><div><b>Ballet III</b><span class="sages"> · Ages by level</span></div><div class="stimes">Tue 4:30 · Thu 6:30</div></div>
+<div class="srow"><div><b>Pre-Pointe</b><span class="sages"> · Ages by level</span></div><div class="stimes">Wed 5:30 · Fri 5:30</div></div>
+</div></details>
+<details class="acc"><summary>Jazz & Musical Theatre</summary><div class="inner"><div class="srow"><div><b>Jazz I</b><span class="sages"> · Ages 6 & up</span></div><div class="stimes">Tue 5:30 · Sat 9:00 · Sun 10:00</div></div>
+<div class="srow"><div><b>Jazz/Lyrical I</b><span class="sages"> · Ages 8 & up</span></div><div class="stimes">Tue 3:30 · Thu 3:30</div></div>
+<div class="srow"><div><b>Jazz/Musical Theatre II</b><span class="sages"> · Ages by level</span></div><div class="stimes">Mon 5:00</div></div>
+<div class="srow"><div><b>Musical Theatre</b><span class="sages"> · Ages 7 & up</span></div><div class="stimes">Sat 10:00</div></div>
+</div></details>
+<details class="acc"><summary>Lyrical & Contemporary</summary><div class="inner"><div class="srow"><div><b>Lyrical I</b><span class="sages"> · Ages 8 & up</span></div><div class="stimes">Mon 5:30 · Wed 4:00</div></div>
+<div class="srow"><div><b>Lyrical — Advanced</b><span class="sages"> · Ages by level</span></div><div class="stimes">Tue 7:30</div></div>
+<div class="srow"><div><b>Contemporary II</b><span class="sages"> · Ages 10 & up</span></div><div class="stimes">Tue 6:30 · Sat 12:00</div></div>
+</div></details>
+<details class="acc"><summary>Tap</summary><div class="inner"><div class="srow"><div><b>Tap I</b><span class="sages"> · Ages 6 & up</span></div><div class="stimes">Thu 5:30</div></div>
+<div class="srow"><div><b>Tap I</b><span class="sages"> · Ages Teen/Adult</span></div><div class="stimes">Mon 7:30 · Wed 1:00</div></div>
+</div></details>
+<details class="acc"><summary>Hip Hop</summary><div class="inner"><div class="srow"><div><b>Hip Hop — Beginning</b><span class="sages"> · Ages 6 & up</span></div><div class="stimes">Wed 4:30 · Wed 5:30 · Thu 6:00</div></div>
+<div class="srow"><div><b>Hip Hop — Beginning</b><span class="sages"> · Ages 10 & up</span></div><div class="stimes">Mon 5:30 · Tue 5:30 · Wed 7:30</div></div>
+<div class="srow"><div><b>Hip Hop — Beginning</b><span class="sages"> · Ages Adult</span></div><div class="stimes">Mon 6:30 · Wed 4:30</div></div>
+<div class="srow"><div><b>Hip Hop — Advanced</b><span class="sages"> · Ages by level</span></div><div class="stimes">Thu 7:00</div></div>
+</div></details>
+<details class="acc"><summary>K-Pop</summary><div class="inner"><div class="srow"><div><b>K-Pop — Beginning</b><span class="sages"> · Ages 6 & up</span></div><div class="stimes">Wed 5:30 · Thu 4:30 · Sat 11:00</div></div>
+<div class="srow"><div><b>K-Pop — Beginning</b><span class="sages"> · Ages 10 & up</span></div><div class="stimes">Tue 5:30 · Thu 7:30 · Fri 4:30 · Sat 1:00</div></div>
+<div class="srow"><div><b>K-Pop — Beginning</b><span class="sages"> · Ages Adult</span></div><div class="stimes">Tue 8:30 PM</div></div>
+</div></details>
+<details class="acc"><summary>Acro</summary><div class="inner"><div class="srow"><div><b>Acro for Dance — Beginning</b><span class="sages"> · Ages 7 & up</span></div><div class="stimes">Mon 4:30 · Tue 5:30 · Wed 5:30 · Thu 5:30 · Sat 11:00</div></div>
+<div class="srow"><div><b>Acro for Dance — Advanced</b><span class="sages"> · Ages 12 & up</span></div><div class="stimes">Mon 8:00</div></div>
+</div></details>
+<details class="acc"><summary>Technique & Conditioning</summary><div class="inner"><div class="srow"><div><b>Turns & Technique I-B/II</b><span class="sages"> · Ages by level</span></div><div class="stimes">Wed 5:00 · Thu 4:30 · Sat 11:00 · Sun 12:00</div></div>
+<div class="srow"><div><b>Stretch & Conditioning</b><span class="sages"> · Ages 10 – Adult</span></div><div class="stimes">Sat 11:00</div></div>
+<div class="srow"><div><b>Pom</b><span class="sages"> · Ages 12 & up</span></div><div class="stimes">Fri 5:30</div></div>
+</div></details>
+<details class="acc"><summary>Adult Classes · to age 92</summary><div class="inner"><p style="color:var(--slate); font-size:.88rem; margin-bottom:12px">Beginners genuinely welcome.</p><div class="srow"><div><b>Ballet — Beginning</b><span class="sages"> · Ages Adult</span></div><div class="stimes">Thu 8:30 PM</div></div>
+<div class="srow"><div><b>Tap I</b><span class="sages"> · Ages Teen/Adult</span></div><div class="stimes">Mon 7:30 · Wed 1:00</div></div>
+<div class="srow"><div><b>Hip Hop — Beginning</b><span class="sages"> · Ages Adult</span></div><div class="stimes">Mon 6:30 · Wed 4:30</div></div>
+<div class="srow"><div><b>K-Pop — Beginning</b><span class="sages"> · Ages Adult</span></div><div class="stimes">Tue 8:30 PM</div></div>
+<div class="srow"><div><b>Stretch & Conditioning</b><span class="sages"> · Ages 10 – Adult</span></div><div class="stimes">Sat 11:00</div></div>
+</div></details>
+
   </div>
 </section>
 
@@ -149,30 +154,3 @@
 </footer>
 </body>
 </html>
-<script>
-(function () {
-  let style = 'all', day = 'All days';
-  const rows = Array.from(document.querySelectorAll('#schedbody tr'));
-  function apply() {
-    let shown = 0;
-    rows.forEach(r => {
-      const okS = style === 'all' || r.dataset.style.split(' ').includes(style);
-      const okD = day === 'All days' || r.dataset.days.split(' ').includes(day);
-      const on = okS && okD;
-      r.style.display = on ? '' : 'none';
-      if (on) shown++;
-    });
-    document.getElementById('noresults').style.display = shown ? 'none' : 'block';
-  }
-  document.querySelectorAll('#f-style .chip-f').forEach(b => b.addEventListener('click', () => {
-    style = b.dataset.f;
-    document.querySelectorAll('#f-style .chip-f').forEach(x => x.classList.toggle('on', x === b));
-    apply();
-  }));
-  document.querySelectorAll('#f-day .chip-f').forEach(b => b.addEventListener('click', () => {
-    day = b.dataset.d;
-    document.querySelectorAll('#f-day .chip-f').forEach(x => x.classList.toggle('on', x === b));
-    apply();
-  }));
-})();
-</script>

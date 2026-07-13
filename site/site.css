@@ -272,3 +272,10 @@ details.acc .inner li { margin-bottom: 6px; }
   .twocol { grid-template-columns: 1fr; }
   .sched { display: block; overflow-x: auto; }
 }
+
+/* schedule rows inside accordions */
+.srow { display: flex; justify-content: space-between; gap: 18px; padding: 10px 2px;
+  border-top: 1px solid rgba(0,36,76,.07); font-size: .93rem; flex-wrap: wrap; }
+.srow:first-of-type { border-top: 0; }
+.srow .sages { color: var(--slate); font-size: .84rem; }
+.srow .stimes { color: var(--royal); font-weight: 600; font-size: .88rem; text-align: right; }

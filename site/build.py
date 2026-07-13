@@ -153,39 +153,61 @@ SCHEDULE = [
     ("Pom", "", "12 & up", "technique", [("Fri","5:30")]),
 ]
 
-STYLE_FILTERS = [
-    ("all", "All styles"), ("combo", "Combos (ages 2–7)"), ("ballet", "Ballet"), ("jazz", "Jazz"),
-    ("lyrical", "Lyrical / Contemporary"), ("tap", "Tap"), ("hiphop", "Hip Hop"), ("kpop", "K-Pop"),
-    ("acro", "Acro"), ("technique", "Technique"), ("adult", "Adult"),
+ACCORDION_GROUPS = [
+    ("Combo Classes · Ages 2\u20137",
+     "One class, two or three styles \u2014 the classic first classes.",
+     ["Mommy & Me", "Ballet/Tap Combo", "Ballet/Lyrical Combo", "Pre-Jazz Hop Tumble", "Pre-Hip Hop", "Pre-Ballet"]),
+    ("Ballet",
+     "The foundation \u2014 through pointe.",
+     ["Ballet I", "Ballet II", "Ballet III", "Pre-Pointe"]),
+    ("Jazz & Musical Theatre", "",
+     ["Jazz I", "Jazz/Lyrical I", "Jazz/Musical Theatre II", "Musical Theatre"]),
+    ("Lyrical & Contemporary", "",
+     ["Lyrical I", "Lyrical \u2014 Advanced", "Contemporary II"]),
+    ("Tap", "",
+     ["Tap I"]),
+    ("Hip Hop", "",
+     ["Hip Hop \u2014 Beginning", "Hip Hop \u2014 Advanced"]),
+    ("K-Pop", "",
+     ["K-Pop \u2014 Beginning"]),
+    ("Acro", "",
+     ["Acro for Dance \u2014 Beginning", "Acro for Dance \u2014 Advanced"]),
+    ("Technique & Conditioning", "",
+     ["Turns & Technique I-B/II", "Stretch & Conditioning", "Pom"]),
+    ("Adult Classes · to age 92",
+     "Beginners genuinely welcome.",
+     ["ADULT_ONLY"]),
 ]
-DAY_FILTERS = ["All days", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
 def classes_page():
-    rows = ""
-    for name, lvl, ages, styles, times in SCHEDULE:
-        days = " ".join(sorted({d for d, t in times}))
-        tstr = " · ".join(f"{d} {t}" for d, t in times)
-        rows += f'<tr data-style="{styles}" data-days="{days}"><td class="cls">{name}</td><td>{ages}</td><td>{tstr}</td></tr>\n'
-    style_chips = "".join(f'<button class="chip-f{" on" if k == "all" else ""}" data-f="{k}">{label}</button>' for k, label in STYLE_FILTERS)
-    day_chips = "".join(f'<button class="chip-f{" on" if d == "All days" else ""}" data-d="{d}">{d}</button>' for d in DAY_FILTERS)
-    return head("Classes & Schedules — Pacific Dance, Irvine", "Dance classes for ages 2–92 in Irvine, CA. Filter the schedule by style, age, and day.") + nav("classes.html") + page_hero(
+    def rows_for(names, adult_only=False):
+        out = ""
+        for name, lvl, ages, styles, times in SCHEDULE:
+            if adult_only:
+                if "adult" not in styles.split():
+                    continue
+            elif name not in names:
+                continue
+            tstr = " \u00b7 ".join(f"{d} {t}" for d, t in times)
+            out += (f'<div class="srow"><div><b>{name}</b>'
+                    f'<span class="sages"> \u00b7 Ages {ages}</span></div>'
+                    f'<div class="stimes">{tstr}</div></div>\n')
+        return out
+    accs = ""
+    for i, (title, sub, names) in enumerate(ACCORDION_GROUPS):
+        adult_only = names == ["ADULT_ONLY"]
+        subline = f'<p style="color:var(--slate); font-size:.88rem; margin-bottom:12px">{sub}</p>' if sub else ""
+        accs += (f'<details class="acc"{" open" if i == 0 else ""}><summary>{title}</summary>'
+                 f'<div class="inner">{subline}{rows_for(names, adult_only)}</div></details>\n')
+    return head("Classes & Schedules \u2014 Pacific Dance, Irvine", "Dance classes for ages 2\u201392 in Irvine, CA \u2014 browse the schedule by style.") + nav("classes.html") + page_hero(
         "Classes & Schedules",
         "Find the right class",
-        "Eight styles, every level, seven days a week — filter by style or day. Ages 2–92, all ability levels and interests welcome.",
+        "Eight styles, every level, seven days a week \u2014 open a style to see its classes and times. Ages 2\u201392, all ability levels and interests welcome.",
     ) + f"""
 <section class="block">
-  <div class="wrap">
-    <div class="fl-label">Style</div>
-    <div class="filters" id="f-style">{style_chips}</div>
-    <div class="fl-label">Day</div>
-    <div class="filters" id="f-day">{day_chips}</div>
-    <div class="sample-note"><b>Mock note:</b> this is a representative sample of the schedule (about a third of it). The launch version lists all 100+ classes from the July 2026 schedule — same filters, same layout.</div>
-    <table class="sched">
-      <thead><tr><th>Class</th><th>Ages</th><th>Days &amp; times</th></tr></thead>
-      <tbody id="schedbody">
-{rows}      </tbody>
-    </table>
-    <p id="noresults" style="display:none; text-align:center; color:var(--slate); padding:26px">No classes match those filters — try widening your search.</p>
+  <div class="wrap" style="max-width:880px">
+    <div class="sample-note"><b>Mock note:</b> a representative sample (about a third of the schedule). At launch, every style below lists all of its classes from the July 2026 schedule \u2014 and the studio can update times right in Squarespace, no code.</div>
+    {accs}
   </div>
 </section>
 
@@ -193,53 +215,26 @@ def classes_page():
   <div class="wrap twocol">
     <div class="card-p">
       <h3>Make-up classes</h3>
-      <p style="margin-top:10px">Missed a class? Request a courtesy make-up in a comparable class — within one month of the absence, requested at least 48 hours ahead via the make-up form. Confirmation comes by email.</p>
+      <p style="margin-top:10px">Missed a class? Request a courtesy make-up in a comparable class \u2014 within one month of the absence, requested at least 48 hours ahead via the make-up form. Confirmation comes by email.</p>
       <ul>
         <li>You must be currently enrolled; make-ups are non-transferable</li>
         <li>Not every class is open for make-ups (size, age &amp; level fit)</li>
         <li>90-minute classes use two make-ups unless you're enrolled in one</li>
       </ul>
-      <p style="margin-top:12px"><a href="policies.html" style="color:var(--royal); font-weight:600">Full make-up policy →</a></p>
+      <p style="margin-top:12px"><a href="policies.html" style="color:var(--royal); font-weight:600">Full make-up policy \u2192</a></p>
     </div>
     <div class="card-p">
       <h3>New classes</h3>
       <p style="margin-top:10px">Recently added to the schedule:</p>
       <ul>
-        <li><b>K-Pop for Beginners</b> — new sections for ages 6+, 8+, and 10+ across the week</li>
-        <li><b>Beginning Adult K-Pop</b> — Tuesdays 8:30 pm</li>
+        <li><b>K-Pop for Beginners</b> \u2014 new sections for ages 6+, 8+, and 10+ across the week</li>
+        <li><b>Beginning Adult K-Pop</b> \u2014 Tuesdays 8:30 pm</li>
       </ul>
       <p style="margin-top:12px">New classes are announced here and in the studio each season.</p>
     </div>
   </div>
 </section>
-""" + cta_band("Not sure which class fits?", "Tell us your dancer's age and interests — Lori will point you to the right class, and the first one is free.") + FOOTER + """
-<script>
-(function () {
-  let style = 'all', day = 'All days';
-  const rows = Array.from(document.querySelectorAll('#schedbody tr'));
-  function apply() {
-    let shown = 0;
-    rows.forEach(r => {
-      const okS = style === 'all' || r.dataset.style.split(' ').includes(style);
-      const okD = day === 'All days' || r.dataset.days.split(' ').includes(day);
-      const on = okS && okD;
-      r.style.display = on ? '' : 'none';
-      if (on) shown++;
-    });
-    document.getElementById('noresults').style.display = shown ? 'none' : 'block';
-  }
-  document.querySelectorAll('#f-style .chip-f').forEach(b => b.addEventListener('click', () => {
-    style = b.dataset.f;
-    document.querySelectorAll('#f-style .chip-f').forEach(x => x.classList.toggle('on', x === b));
-    apply();
-  }));
-  document.querySelectorAll('#f-day .chip-f').forEach(b => b.addEventListener('click', () => {
-    day = b.dataset.d;
-    document.querySelectorAll('#f-day .chip-f').forEach(x => x.classList.toggle('on', x === b));
-    apply();
-  }));
-})();
-</script>"""
+""" + cta_band("Not sure which class fits?", "Tell us your dancer's age and interests \u2014 Lori will point you to the right class, and the first one is free.") + FOOTER
 
 # ============================================================ ENROLL
 def enroll_page():
