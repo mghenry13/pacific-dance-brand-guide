@@ -29,7 +29,7 @@ def head(title, desc=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Podkova:wght@400;500;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=5">
+<link rel="stylesheet" href="site.css?v=6">
 </head>
 <body>
 """
@@ -40,7 +40,7 @@ def nav(active):
         f'<li><a href="{href}"{on if href == active else ""}>{label}</a></li>'
         for href, label in NAV_ITEMS[1:]
     )
-    return f"""<div class="annbar">Fall enrollment is open — the first class is free. <a href="enroll.html">Book now →</a></div>
+    return f"""<div class="annbar">Enrollment is open — the first class is free. <a href="enroll.html">Book now →</a></div>
 <header>
   <div class="wrap nav">
     <a class="logo" href="index.html"><img src="../assets/img/pd-logo.jpg" alt="Pacific Dance"></a>
@@ -122,7 +122,7 @@ def cta_band(h="The first class is free.", p="Tell us a little about your dancer
     <h2>{h}</h2>
     <p>{p}</p>
     <a class="btn" style="background:var(--sky); color:var(--navy)" href="{href}">{CTA}</a>
-    <small>Takes about a minute · Lori, our co-owner, replies within two days</small>
+    <small>Takes about a minute · Lori, our Owner / Director, replies within a day or two</small>
   </div>
 </section>
 """
@@ -267,8 +267,8 @@ def enroll_page():
       <h2 style="font-size:2rem; margin-top:10px">Three steps, one happy dancer</h2>
       <div style="margin-top:24px; display:flex; flex-direction:column; gap:18px">
         <div class="card-p"><h3>1 · Tell us about your dancer</h3><p style="margin-top:6px">The short form here — about a minute.</p></div>
-        <div class="card-p"><h3>2 · Lori replies — within two days, tops</h3><p style="margin-top:6px">Your form goes to Lori, our co-owner, who personally matches every dancer to the right class — age, level, and interest. She's placed thousands of students, and it's the thing families thank us for most.</p></div>
-        <div class="card-p"><h3>3 · Come dance — free</h3><p style="margin-top:6px">Try the class. If your dancer loves it (they usually do), we'll get them enrolled. Registration and the waiver happen after you've scheduled — not before.</p></div>
+        <div class="card-p"><h3>2 · Lori replies — within a day or two</h3><p style="margin-top:6px">Your form goes to Lori, our Owner / Director, who personally matches every dancer to the right class — age, level, and interest. She's placed thousands of students, and it's the thing families thank us for most.</p></div>
+        <div class="card-p"><h3>3 · Come dance — free</h3><p style="margin-top:6px">Try the class. A quick waiver is required before your dancer takes the floor — we'll send it once your class is booked, so there's nothing to fill out up front. Love it? We'll get them enrolled.</p></div>
       </div>
     </div>
     <div>
@@ -284,8 +284,8 @@ def enroll_page():
           <button class="btn btn-primary" type="submit">{CTA}</button>
           <p class="form-note">No card, no commitment — takes about a minute.</p>
           <div class="lori-promise">
-            <img src="../assets/img/instr-lori.jpg" alt="Lori Murphy, co-owner of Pacific Dance">
-            <p><b>Your form goes straight to Lori, our co-owner — she replies within two days, usually sooner.</b> She's matched thousands of dancers to the right class over thirty years, and families tell us she's the friendliest part of getting started.</p>
+            <img src="../assets/img/instr-lori.jpg" alt="Lori Murphy, Owner / Director of Pacific Dance">
+            <p><b>Your form goes straight to Lori, our Owner / Director — she replies within a day or two, usually sooner.</b> She's matched thousands of dancers to the right class over thirty years, and families tell us she's the friendliest part of getting started.</p>
           </div>
         </form>
       </div>
@@ -360,7 +360,7 @@ def enroll_page():
 
 # ============================================================ ABOUT
 def about_page():
-    instructors = json.load(open('/tmp/instructors.json'))
+    instructors = json.load(open(os.path.join(HERE, 'instructors.json')))
     cards = ""
     for idx, ins in enumerate(instructors):
         name = ins['name'].split(' - ')[0]
@@ -372,7 +372,8 @@ def about_page():
             initials = "".join(w[0] for w in name.split()[:2])
             ph = f'<div class="mono">{initials}</div>'
         paras = ins['paras'] or ["Bio coming soon."]
-        full = "".join(f"<p>{p}</p>" for p in paras[:2])
+        limit = len(paras) if role == "Owner / Director" else 2
+        full = "".join(f"<p>{p}</p>" for p in paras[:limit])
         flip = " flip" if idx % 2 else ""
         cards += f"""<div class="instr-row{flip}"><div class="iph">{ph}</div><div><h3>{name}</h3><div class="irole">{role}</div>{full}</div></div>\n"""
     return head("About — Pacific Dance, Irvine", "Training dancers since 1994. Meet the instructors behind Irvine's home for dance.") + nav("about.html") + page_hero(
@@ -498,7 +499,7 @@ def recital_page():
     return head("Recital & Events — Pacific Dance", "The annual recital at the Irvine Barclay Theater, summer workshops, and studio events.") + nav("recital.html") + page_hero(
         "Recital & Events",
         "Every dancer gets the big stage",
-        "From the two-year-olds to the seniors — every June, every dancer performs at the Irvine Barclay Theater.",
+        "From the three-year-olds to the seniors — every June, every dancer performs at the Irvine Barclay Theater.",
     ) + f"""
 <section class="block">
   <div class="wrap twocol">
@@ -714,15 +715,15 @@ def landing_page():
           <button class="btn btn-primary" type="submit">{CTA}</button>
           <p class="form-note">No card, no commitment — takes about a minute.</p>
           <div class="lori-promise">
-            <img src="../assets/img/instr-lori.jpg" alt="Lori Murphy, co-owner of Pacific Dance">
-            <p><b>Your form goes straight to Lori, our co-owner — she replies within two days, usually sooner.</b> She's matched thousands of dancers to the right class over thirty years, and families tell us she's the friendliest part of getting started.</p>
+            <img src="../assets/img/instr-lori.jpg" alt="Lori Murphy, Owner / Director of Pacific Dance">
+            <p><b>Your form goes straight to Lori, our Owner / Director — she replies within a day or two, usually sooner.</b> She's matched thousands of dancers to the right class over thirty years, and families tell us she's the friendliest part of getting started.</p>
           </div>
         </form>
       </div>
     </div>
     <div>
       <div class="card-p"><h3>Small classes, always</h3><p style="margin-top:6px">Capped at 12–15 dancers in the young groups — every kid is seen, corrected, and known by name.</p></div>
-      <div class="card-p" style="margin-top:14px"><h3>The right-class promise</h3><p style="margin-top:6px">Lori, our co-owner, personally matches every dancer to the right class by age, level, and interest — she's placed thousands of dancers, and she replies within two days.</p></div>
+      <div class="card-p" style="margin-top:14px"><h3>The right-class promise</h3><p style="margin-top:6px">Lori, our Owner / Director, personally matches every dancer to the right class by age, level, and interest — she's placed thousands of dancers, and she replies within a day or two.</p></div>
       <div class="card-p" style="margin-top:14px"><h3>Watch every minute</h3><p style="margin-top:6px">Viewing windows on the studios and a comfortable parent waiting area — homework happens between classes.</p></div>
       <div class="card-p" style="margin-top:14px"><h3>Come see it first</h3><p style="margin-top:6px"><b>4880 Irvine Boulevard, Suite 101, Irvine, CA 92620</b> — in the Northwood Town Center, with easy parking. Open seven days. <a href="https://goo.gl/maps/71tf8LPYSMy" target="_blank" rel="noopener" style="color:var(--royal); font-weight:600">Get directions →</a></p></div>
       <div class="pull-review" style="margin-top:20px">"The focus is never on winning — it's about the kids doing their best and having fun."<span>— Becky · via Google</span></div>
@@ -789,7 +790,7 @@ def landing_page():
     <details class="acc"><summary>What does it cost if we continue?</summary><div class="inner"><p>$35 registration, then simple monthly tuition from $95 for one class a week — the more classes, the less each costs. <a href="enroll.html" style="color:var(--royal); font-weight:600">Full tuition table →</a></p></div></details>
     <details class="acc"><summary>What ages do you take?</summary><div class="inner"><p>2 to 92. Mommy &amp; Me through adult classes, every ability level and interest.</p></div></details>
     <details class="acc"><summary>When are classes?</summary><div class="inner"><p>Seven days a week, across eight styles — Lori will point you to the exact times that fit your schedule. <a href="classes.html" style="color:var(--royal); font-weight:600">Browse the schedule →</a></p></div></details>
-    <details class="acc"><summary>Who teaches?</summary><div class="inner"><p>Working professionals from the Orange County and LA dance worlds, led by co-owner Lori Murphy (MFA in Dance, UC Irvine) — plus master classes from industry professionals. <a href="about.html" style="color:var(--royal); font-weight:600">Meet the instructors →</a></p></div></details>
+    <details class="acc"><summary>Who teaches?</summary><div class="inner"><p>Working professionals from the Orange County and LA dance worlds, led by Owner / Director Lori Murphy (Masters of Fine Arts in Dance, UC Irvine) — plus master classes from industry professionals. <a href="about.html" style="color:var(--royal); font-weight:600">Meet the instructors →</a></p></div></details>
   </div>
 </section>
 
@@ -815,9 +816,9 @@ def thankyou_page():
 <section class="block" style="min-height:60vh; display:flex; align-items:center">
   <div class="wrap" style="max-width:640px">
     <div class="formcard thanks">
-      <img src="../assets/img/instr-lori.jpg" alt="Lori, co-owner of Pacific Dance">
+      <img src="../assets/img/instr-lori.jpg" alt="Lori, Owner / Director of Pacific Dance">
       <h3>You're in — talk soon!</h3>
-      <p>Hi, I'm Lori. I'll email you within two days — usually much sooner — to find the perfect class for your dancer. Want a head start? A few more details help me place them just right.</p>
+      <p>Hi, I'm Lori. I'll email you within a day or two — usually much sooner — to find the perfect class for your dancer. Want a head start? A few more details help me place them just right.</p>
       <a class="btn btn-primary" style="margin-top:18px" href="contact.html#cform">Add more details (optional)</a>
       <p class="form-note">Or just wait for my email — either works! <a href="index.html" style="color:var(--royal)">Back to the homepage</a></p>
     </div>
