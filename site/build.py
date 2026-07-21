@@ -596,41 +596,17 @@ def recital_page():
 
 # ============================================================ POLICIES & INFO
 def policies_page():
-    def acc(title, inner, open_=False):
-        return f'<details class="acc"{" open" if open_ else ""}><summary>{title}</summary><div class="inner">{inner}</div></details>'
-    policies = (
-        acc("Registration", "<p>A registration form and waiver must be completed by a parent or legal guardian before any class is taken. The $35 registration fee applies again if you discontinue for more than a month and return.</p><p style=\"margin-top:10px\"><a href=\"how-to-enroll.html\" style=\"color:var(--royal); font-weight:600\">Complete the registration form &rarr;</a></p>", True)
-        + acc("Tuition & Auto Pay", "<ul><li>Tuition is monthly, regardless of weeks or holidays in the month.</li><li>All tuition runs on Auto Pay — charged on or about the 1st. Declines must be resolved by the 7th to avoid a $35 late fee.</li><li>No credits or refunds for absences, tuition, costumes, competition, workshop, or convention fees.</li><li>Dropping a class? Email by the 20th of the prior month, or the next month's tuition applies.</li></ul>")
-        + acc("Absences & make-ups", "<p>Request a courtesy make-up in a comparable class within one month of the absence, at least 48 hours ahead, via the make-up form. Make-ups are non-transferable, end when you drop all classes, and aren't guaranteed for every schedule, age, or level. 90-minute classes use two make-ups unless you're enrolled in one.</p>")
-        + acc("Recital participation", "<p>The annual recital is optional. Participating dancers need good attendance, the assigned costume, tights and shoes, and the mandatory rehearsals and shows. Accounts must be paid in full before dress rehearsal.</p>")
-        + acc("Supervision", "<p>Children are supervised during class time only — please don't drop off early or pick up late.</p>")
-        + acc("Photography & video", "<p>No photographing or videotaping other people's children without prior parent and teacher authorization. Pacific Dance may use class photos and video for its website, social media, and advertising.</p>")
-    )
-    attire = (
-        acc("Combo & Pre-Ballet (ages 2–7)", "<p>Tight-fitting dance attire — tights and leotard, bike shorts or leggings. No t-shirts, street clothes, or large tutus. Ballet and tap shoes for B/T combos.</p>", True)
-        + acc("Ballet", "<p>Black leotard, pink tights, pink ballet shoes. Buns required. Upper levels: no skirts, black sports bras only. Male dancers: white tank or tee, black dance shorts, black ballet shoes.</p>")
-        + acc("Jazz · Lyrical · Tap · Acro", "<p>Leggings or spandex shorts with a tight-fitting top or leotard — no street clothes. Jazz shoes for jazz, tap shoes for tap, bare feet for acro, jazz or half-sole shoes for lyrical.</p>")
-        + acc("Hip Hop & K-Pop", "<p>Loose-fitting street clothes and sneakers — the one place street clothes belong.</p>")
-        + acc("The fine print", "<p>No jewelry in class (safety). Hair pulled back and out of the eyes; buns in all ballet classes. Proper attire lets teachers see placement and train dancers safely.</p>")
-    )
     return head("Policies & Info — Pacific Dance", "School policies, dance attire, Pacific Dancewear, and directions.") + nav("policies.html") + page_hero(
         "Policies & Info",
         "The practical stuff, in one place",
         "Policies, attire, the dancewear store, and how to find us.",
     ) + f"""
 <section class="block">
-  <div class="wrap twocol">
-    <div>
-      <div class="eyebrow">School policies</div>
-      <h2 style="font-size:1.9rem; margin:10px 0 6px">Policies</h2>
-      <p style="margin:0 0 20px; font-size:.9rem; color:var(--slate)">Quick summaries below — the complete, current policies are part of the <a href="how-to-enroll.html" style="color:var(--royal); font-weight:600">registration form</a>.</p>
-      {policies}
-    </div>
-    <div>
-      <div class="eyebrow">What to wear</div>
-      <h2 style="font-size:1.9rem; margin:10px 0 20px">Dance attire</h2>
-      {attire}
-    </div>
+  <div class="wrap" style="max-width:720px; text-align:center">
+    <div class="eyebrow">School policies</div>
+    <h2 style="font-size:clamp(1.8rem,4vw,2.4rem); margin-top:10px">The full policies, always current</h2>
+    <p style="margin-top:14px; color:var(--slate)">Our complete studio policies and required dance attire are built right into the registration form — so what you read is always the current version, straight from the studio.</p>
+    <p style="margin-top:24px"><a class="btn btn-primary" href="how-to-enroll.html">Read the full policies &rarr;</a></p>
   </div>
 </section>
 
