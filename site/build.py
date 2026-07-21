@@ -400,7 +400,7 @@ def about_page():
     <div>
       <div class="eyebrow">Our story</div>
       <h2 style="font-size:2.1rem; margin-top:10px">Joy first. Training always.</h2>
-      <p style="margin-top:16px; color:#24405e">Lori started teaching at the Irvine School of Dance in 1985, and in 1994 she and Tim made it their own. Three decades later, Pacific Dance is the largest studio in the area — 18,000 square feet, ten studios with raised floors — and still runs like the family business it is.</p>
+      <p style="margin-top:16px; color:#24405e">Lori started teaching at the Irvine School of Dance in 1985, and in 1994 she and Tim made it their own. Three decades later, Pacific Dance is the largest studio in the area — 18,000 square feet, ten studios with raised floors — and runs like the family business it is.</p>
       <p style="margin-top:12px; color:#24405e">Our goal has never changed: professional training that's safe and individualized for every level of student, in a place kids genuinely love to be. Whether your dancer is training toward a career, keeping fit, or just having fun, they belong here — every ability level and interest, ages 2 to 92.</p>
       <p style="margin-top:12px; color:#24405e">Our teachers come from professional backgrounds across ballet companies, film, TV, music videos, universities, and the stage — and we regularly host master classes from industry professionals. Around Irvine, most families just call it "Pacific."</p>
       <div class="pull-review" style="margin-top:20px">"I have been at Pacific Dance for almost all my life and it is like a second home to me… such a positive and happy environment."<span>— Kerry · via Yelp · PD dancer</span></div>
