@@ -29,7 +29,7 @@ def head(title, desc=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Podkova:wght@400;500;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=8">
+<link rel="stylesheet" href="site.css?v=9">
 </head>
 <body>
 """
@@ -212,7 +212,9 @@ def classes_page():
         subline = f'<p style="color:var(--slate); font-size:.88rem; margin-bottom:12px">{sub}</p>' if sub else ""
         accs += (f'<details class="acc" id="{slugs[i]}"{" open" if i == 0 else ""}><summary>{title}</summary>'
                  f'<div class="inner">{subline}{rows_for(names, adult_only)}</div></details>\n')
-    return head("Classes & Schedules \u2014 Pacific Dance, Irvine", "Dance classes for ages 2\u201392 in Irvine, CA \u2014 browse the schedule by style.") + nav("classes.html") + page_hero(
+    return head("Classes & Schedules \u2014 Pacific Dance, Irvine", "Dance classes for ages 2\u201392 in Irvine, CA \u2014 browse the schedule by style.") + nav("classes.html") + """
+<div class="wrap" style="max-width:880px"><div class="opt-switch">Reviewing <b>two schedule options</b> \u2014 this is <b>Option 1: browse-by-style</b>. <a href="classes-doc.html">See Option 2: uploaded document (PDF) \u2192</a></div></div>
+""" + page_hero(
         "Classes & Schedules",
         "Find the right class",
         "Eight styles, every level, seven days a week \u2014 open a style to see its classes and times. Ages 2\u201392, all ability levels and interests welcome.",
@@ -846,9 +848,55 @@ def pgfamily_page():
 </section>
 """ + FOOTER
 
+# ============================================================ CLASSES — OPTION 2 (document/PDF)
+def classes_doc_page():
+    return head("Class Schedule — Pacific Dance, Irvine", "The full Pacific Dance class schedule for Irvine, CA — view online or download the PDF.") + nav("classes.html") + f"""
+<div class="wrap" style="max-width:1000px"><div class="opt-switch">Reviewing <b>two schedule options</b> — this is <b>Option 2: uploaded document</b> (matches the studio's current workflow). <a href="classes.html">See Option 1: browse-by-style →</a></div></div>
+""" + page_hero(
+        "Classes & Schedules",
+        "The class schedule",
+        "The full studio schedule, updated monthly. View it right here, or download to print for the fridge. Ages 2–92, seven days a week.",
+    ) + f"""
+<section class="block">
+  <div class="wrap" style="max-width:1000px">
+    <div class="sample-note"><b>Mock note — Option 2:</b> this mirrors how the studio works today. Each month Lori exports two files and swaps them in Squarespace — no grid to edit, no code. The schedule shows inline as an image below, with PDFs to print. (Sample = real July 2026 schedule.)</div>
+
+    <div class="sched-head">
+      <span class="sched-badge">Effective July 2026</span>
+      <span class="sched-upd">Updated monthly by the studio</span>
+    </div>
+
+    <div class="sched-actions">
+      <a class="btn btn-primary" href="../assets/schedule/schedule-by-studio.pdf" target="_blank" rel="noopener">Schedule by Studio + Teacher · PDF</a>
+      <a class="btn btn-ghost-navy" href="../assets/schedule/list-by-class.pdf" target="_blank" rel="noopener">List by Class · PDF</a>
+    </div>
+
+    <div class="sched-frame">
+      <img src="../assets/schedule/sbs-1.png" alt="Pacific Dance schedule — Studios One, Two, Three and Four, page 1" loading="lazy">
+      <img src="../assets/schedule/sbs-2.png" alt="Pacific Dance schedule, page 2" loading="lazy">
+      <img src="../assets/schedule/sbs-3.png" alt="Pacific Dance schedule, page 3" loading="lazy">
+    </div>
+
+    <p class="sched-tip">Tap either PDF above to zoom in or print. On the live site, only this schedule image and the two PDFs change each month — everything else stays put.</p>
+
+    <div class="pull-review" style="margin-top:30px">"All the teachers here are so welcoming and friendly… My child dances here and I also take adult ballet here and love it!"<span>— Daphne · via Yelp · parent &amp; adult student</span></div>
+  </div>
+</section>
+
+<section class="block mist-bg">
+  <div class="wrap" style="max-width:760px; text-align:center">
+    <div class="eyebrow">Two ways to see it</div>
+    <h2 style="font-size:clamp(1.7rem,3.4vw,2.3rem); margin-top:10px">Prefer to browse by style?</h2>
+    <p style="margin-top:12px; color:var(--slate)">See the same classes in a tap-to-open list organized by dance style and age — no scanning a grid.</p>
+    <p style="margin-top:20px"><a class="btn btn-primary" href="classes.html">Browse by style →</a></p>
+  </div>
+</section>
+""" + cta_band("Not sure which class fits?", "Tell us your dancer's age and interests — Lori will point you to the right class, and the first one is free.") + FOOTER
+
 PAGES = {
     'index.html': homepage,
     'classes.html': classes_page,
+    'classes-doc.html': classes_doc_page,
     'enroll.html': enroll_page,
     'about.html': about_page,
     'performing-groups.html': pg_page,

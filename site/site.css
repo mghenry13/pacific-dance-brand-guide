@@ -330,3 +330,19 @@ details.acc .inner li { margin-bottom: 6px; }
 
 /* anchor targets clear the sticky header */
 .acc { scroll-margin-top: 96px; }
+
+/* ============================ schedule — Option 2 (document) ============================ */
+.opt-switch { background: rgba(0,168,229,.09); border: 1px dashed var(--sky); border-radius: 8px;
+  padding: 11px 16px; font-size: .84rem; color: var(--navy); margin-bottom: 4px; }
+.opt-switch a { color: var(--royal); font-weight: 700; white-space: nowrap; }
+.sched-head { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin: 4px 0 18px; }
+.sched-badge { background: var(--navy); color: #fff; border-radius: 999px; padding: .42rem 1.05rem;
+  font-family: var(--display); font-weight: 700; font-size: .88rem; }
+.sched-upd { color: var(--slate); font-size: .86rem; }
+.sched-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+.btn-ghost-navy { background: #fff; color: var(--navy); border: 1.5px solid var(--silver); }
+.btn-ghost-navy:hover { border-color: var(--royal); color: var(--royal); }
+.sched-frame { display: flex; flex-direction: column; gap: 16px; }
+.sched-frame img { width: 100%; height: auto; border: 1px solid rgba(0,36,76,.12);
+  border-radius: var(--radius); box-shadow: 0 12px 34px -20px rgba(0,36,76,.45); background: #fff; }
+.sched-tip { margin-top: 16px; font-size: .85rem; color: var(--slate); }
