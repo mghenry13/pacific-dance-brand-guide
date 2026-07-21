@@ -29,7 +29,7 @@ def head(title, desc=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Podkova:wght@400;500;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=9">
+<link rel="stylesheet" href="site.css?v=10">
 </head>
 <body>
 """
@@ -80,6 +80,7 @@ FOOTER = f"""<footer id="footer">
         <ul>
           <li><a href="classes.html">Classes &amp; Schedules</a></li>
           <li><a href="enroll.html">{CTA}</a></li>
+          <li><a href="how-to-enroll.html">How to Enroll</a></li>
           <li><a href="performing-groups.html">Performing Groups</a></li>
           <li><a href="recital.html">Recital &amp; Events</a></li>
           <li><a href="policies.html">Policies &amp; Info</a></li>
@@ -270,7 +271,7 @@ def enroll_page():
       <div style="margin-top:24px; display:flex; flex-direction:column; gap:18px">
         <div class="card-p"><h3>1 · Tell us about your dancer</h3><p style="margin-top:6px">The short form here — about a minute.</p></div>
         <div class="card-p"><h3>2 · Lori replies — within a day or two</h3><p style="margin-top:6px">Your form goes to Lori, our Owner / Director, who personally matches every dancer to the right class — age, level, and interest. She's placed thousands of students, and it's the thing families thank us for most.</p></div>
-        <div class="card-p"><h3>3 · Come dance — free</h3><p style="margin-top:6px">Try the class. A quick waiver is required before your dancer takes the floor — we'll send it once your class is booked, so there's nothing to fill out up front. Love it? We'll get them enrolled.</p></div>
+        <div class="card-p"><h3>3 · Come dance — free</h3><p style="margin-top:6px">Try the class. A quick waiver is required before your dancer takes the floor — we'll send it once your class is booked, so there's nothing to fill out up front. Love it? <a href="how-to-enroll.html" style="color:var(--royal); font-weight:600">Complete your registration →</a></p></div>
       </div>
     </div>
     <div>
@@ -893,10 +894,150 @@ def classes_doc_page():
 </section>
 """ + cta_band("Not sure which class fits?", "Tell us your dancer's age and interests — Lori will point you to the right class, and the first one is free.") + FOOTER
 
+# ============================================================ HOW TO ENROLL (full registration + waiver)
+def how_to_enroll_page():
+    hear_opts = "".join(f"<option>{o}</option>" for o in
+        ["", "Friend / Family", "Walk by", "Google", "Facebook", "Instagram", "TikTok", "YouTube", "Mom's Group (Facebook)", "Yelp", "Other"])
+    state_ph = 'placeholder="CA"'
+
+    school_policies = """
+      <h5>Registration</h5>
+      <p>A registration form/waiver must be completed and submitted from our website by the parent or legal guardian before any class is taken. There is a $35 registration fee. If you discontinue classes for any reason for more than one month and then return, you will be required to pay the registration fee upon re-enrolling.</p>
+      <h5>Tuition / Fees</h5>
+      <p>Tuition for classes is a monthly tuition (regardless of the number of weeks or holidays in any month). Please see Holidays Closed on our website.</p>
+      <p>All tuition must be set up for Auto Pay with a credit card. Your credit card will be charged on or about the 1st day of each month. Should your card be declined for any reason, you must pay by the 7th day of the month to avoid a $35 late fee and provide us with your new credit card information by the 7th day of the month in which it was declined.</p>
+      <p>NO statements will be sent to you unless your tuition is late. A $35 late fee will be charged for all tuition payments received after the 1st day of the month. A $35 fee will be charged on all returned checks.</p>
+      <p>NO credit or refund is given for absences, tuition, costumes, competition fees, workshop fees, or convention fees.</p>
+      <p>If you are dropping any or all classes, you must notify us via e-mail at PacificDance1@gmail.com by the 20th day of the month preceding the month you would like to drop, or you will be responsible for paying your tuition for the following month.</p>
+      <h5>Absences</h5>
+      <p>If you are absent from a class, you may request a courtesy make-up in a comparable class after the class is missed. A make-up must be taken no later than one month from the date of the absence, and you must be currently registered in a class. Once you drop all classes, you lose all make-ups. Make-ups are non-transferrable. All make-ups must be requested at least 48 hours in advance of the class you are interested in making up in from our website Make-Up page. Pacific Dance will send a confirmation email. Not all classes will be open for make-ups. Pacific Dance has the right to refuse the use of a make-up should the class size be too large on the day of a make-up, or if the level/age is not appropriate for the student.</p>
+      <p>If you are taking a make-up class in a 90 minute class and are not enrolled in a 90 minute class, you will need to use two make-ups to take a make-up in a 90 minute class. We cannot guarantee a make-up will be available for your schedule, age or level.</p>
+      <h5>Attire</h5>
+      <p>Proper dancewear and shoes are required for all classes (please see the Required Dance Attire page on our website for details).</p>
+      <h5>Recital</h5>
+      <p>Our annual Recital is optional. If you decide to participate in the Recital, you are required to have good attendance in your class(es), purchase the assigned costume(s), tights and shoes, and attend mandatory rehearsals and all scheduled recital performances. If your account balance is not paid in full prior to the Mandatory Dress Rehearsal date for the Recital, your child will not be able to participate in the Recital.</p>
+      <h5>Supervision of Students</h5>
+      <p>Children are supervised during class time only and should not be dropped off early or picked up late.</p>
+      <h5>Photography and Videotaping</h5>
+      <p>Unless prior parental and teacher authorization has been given, no photography or videotaping is allowed at Pacific Dance of any student other than your own.</p>
+      <h5>Miscellaneous</h5>
+      <p>Despite our safety precautions, there is a risk of contagion in any public place. By coming into the studio, you are acknowledging that you understand these risks and do not hold Pacific Dance or employees liable.</p>
+      <p>In order to maintain the quality level of dance training at Pacific Dance, classes run year-round. Very often our classes are full, so space may be limited. If you drop your class(es), your space in that class cannot be held. If you have any questions, please feel free to e-mail us at PacificDance1@gmail.com.</p>"""
+
+    waiver = """
+      <p>I have chosen to have my child participate in dance instruction given by Pacific Dance, Inc. (&ldquo;Pacific Dance&rdquo;). I acknowledge that I understand the nature of the activities my child will be participating in and that my child is in the proper physical condition and capable of participating in the related activities, understanding that Pacific Dance is not in any way responsible for making such a determination. In consideration of my child&rsquo;s enrollment in any dance instruction program, I understand and agree on behalf of myself and my child, to release, hold harmless, and discharge Pacific Dance from all claims, costs, liabilities, expenses or judgments, including attorneys&rsquo; fees and court costs for any occurrences in connection with any dance instruction. I assume all risks to my child in connection with any instruction and further release Pacific Dance and its owners and employees from liability for any injury sustained by my child while he or she is enrolled in any dance instruction program, including all risks reasonably connected with such activity whether foreseen or unforeseen. I understand that despite precautions and policies put in place by Pacific Dance, there is a risk of any contagion, including Covid-19, to my minor child or myself. Participation is voluntary with knowledge of this risk. By executing this Waiver, you hereby release Pacific Dance from any and all liability and responsibility that may arise from any infection by, or exposure or suspected exposure to, the Coronavirus in connection with dance classes. I understand that Pacific Dance is not responsible for my child or other children under my supervision who are left unsupervised in the common areas and areas surrounding the dance studio and that Pacific Dance will only be supervising my child when he or she is participating in scheduled dance activities, programs or instruction. I understand that Pacific Dance is not responsible for personal property that is lost, damaged or stolen while I or my child is at or on Pacific Dance property. I acknowledge and agree that it is my responsibility to maintain my own accident and health insurance coverage that provides adequate coverage for myself and my child participating in Pacific Dance activities and that Pacific Dance does not provide accident or health insurance for those participating in its instruction, activities or programs. I authorize and agree that Pacific Dance may take and use photographs, videos or likenesses of myself or my child as needed for its record-keeping, advertising and/or public relations projects and that I have no rights to the same and will not be compensated for the same. By clicking the &ldquo;I Agree&rdquo; box I agree to execute a complete and unconditional waiver and release of all liability pursuant to the terms herein, and agreement as to all terms and conditions contained above. I am of lawful age and competent to execute this affirmation. I HAVE FULLY INFORMED MYSELF AS TO THE CONTENTS OF THIS RELEASE AND HAVE READ THE SAME PRIOR TO AGREEMENT OF TERMS.</p>
+      <h5>Tuition Autopay</h5>
+      <p>I understand and agree that Pacific Dance will charge my credit card provided by me in the amount of my current tuition on or about the 1st day of each month.</p>
+      <p>I understand and agree that this charge is for monthly tuition, and the recurring charge will continue for 180 months or until I have provided Pacific Dance notice via e-mail at PacificDance1@gmail.com to drop all of my classes and terminate my recurring charge. This e-mail must be sent by the 20th day of the month preceding the month you want to drop all classes.</p>
+      <p>I understand and agree that if my credit card is declined for any reason whatsoever (i.e., it has been declined, cancelled or changed), my account will be manually invoiced and will incur a late fee of $35 if my account has not been paid manually via check, cash or credit card prior to the 7th day of the month. It is my responsibility to contact you with my updated credit card information.</p>
+      <p>I will not dispute Pacific Dance&rsquo;s recurring billing with my credit card issuer so long as the amount in question was for services rendered prior to my canceling my account in the manner required.</p>
+      <p>I guarantee and warrant that I am the legal cardholder for this credit card and that I am legally authorized to enter into this one time or recurring billing agreement with Pacific Dance.</p>"""
+
+    return head("How to Enroll — Pacific Dance, Irvine", "Register at Pacific Dance in Irvine — complete the registration form and waiver to enroll your dancer.") + nav("enroll.html") + page_hero(
+        "How to Enroll",
+        "Ready to make it official?",
+        "Tried a class and found the right fit? Complete your registration below and your dancer is in. We're happy to help you through it — this should take about five minutes.",
+        bg="../assets/img/ba-studio-after.jpg", bg_alt="Inside a Pacific Dance studio",
+    ) + f"""
+<section class="block">
+  <div class="wrap" style="max-width:760px">
+    <div class="sample-note"><b>Mock note:</b> in Squarespace this is a native Form Block — same fields, dropdowns, and two agreement checkboxes as the studio's current form, plus the full legal text. Lori edits it in the form editor; no code.</div>
+
+    <div class="steps3">
+      <div class="step"><span class="stepn">1</span><h4>Try a free class</h4><p>New here? Start with a free class so your dancer finds the right fit — no card, no commitment.</p><a href="enroll.html" class="steplink">Book a free class →</a></div>
+      <div class="step"><span class="stepn">2</span><h4>Register &amp; sign the waiver</h4><p>Fill out the form below — dancer details, classes of interest, and the two agreements. About five minutes.</p></div>
+      <div class="step"><span class="stepn">3</span><h4>Set up autopay &amp; dance</h4><p>We'll set up monthly Auto Pay together and get your dancer on the schedule. We accept students year-round.</p></div>
+    </div>
+
+    <div class="help-line">
+      <b>Prefer a hand?</b> We're glad to walk you through it personally — that's how we find the best fit for your dancer.
+      Call <a href="tel:+17147311108">714-731-1108</a> or email <a href="mailto:info@pacificdance.net">info@pacificdance.net</a>.
+      Enroll after the first week of the month and we'll pro-rate your tuition.
+    </div>
+
+    <div class="formcard" id="registration" style="margin-top:30px">
+      <h3 style="font-size:1.5rem">Registration Form</h3>
+      <p style="font-size:.9rem; color:var(--slate); margin-top:6px">A parent or legal guardian must complete this form before the first class.</p>
+      <form onsubmit="event.preventDefault(); this.style.display='none'; document.getElementById('reg-done').style.display='block'; document.getElementById('reg-done').scrollIntoView({{block:'center'}});">
+
+        <div class="fsec">
+          <h3>The dancer</h3>
+          <div class="frow">
+            <div><label>Student first name *</label><input required placeholder="First name"></div>
+            <div><label>Student last name *</label><input required placeholder="Last name"></div>
+          </div>
+          <div class="frow thirds">
+            <div><label>Date of birth *</label><input required placeholder="mm/dd/yyyy"></div>
+            <div><label>Age *</label><input required placeholder="e.g. 6"></div>
+            <div><label>Gender *</label><select required><option value=""></option><option>Girl</option><option>Boy</option><option>Other</option></select></div>
+          </div>
+        </div>
+
+        <div class="fsec">
+          <h3>Parent / guardian</h3>
+          <div class="frow">
+            <div><label>Parent first name *</label><input required placeholder="First name"></div>
+            <div><label>Parent last name *</label><input required placeholder="Last name"></div>
+          </div>
+          <div class="frow">
+            <div><label>Email *</label><input type="email" required placeholder="you@email.com"></div>
+            <div><label>Cell phone *</label><input type="tel" required placeholder="(714) 555-0123"></div>
+          </div>
+          <label>Second phone <span style="font-weight:400; color:var(--slate)">(optional)</span></label><input type="tel" placeholder="Optional">
+        </div>
+
+        <div class="fsec">
+          <h3>Address</h3>
+          <label>Street address *</label><input required placeholder="Address line 1">
+          <label>Apt / unit <span style="font-weight:400; color:var(--slate)">(optional)</span></label><input placeholder="Address line 2">
+          <div class="frow thirds">
+            <div><label>City *</label><input required placeholder="Irvine"></div>
+            <div><label>State *</label><input required {state_ph}></div>
+            <div><label>ZIP *</label><input required placeholder="92620"></div>
+          </div>
+        </div>
+
+        <div class="fsec">
+          <h3>Classes &amp; interests</h3>
+          <label>What classes are you interested in? *</label>
+          <textarea rows="3" required placeholder="Tell us the styles, days, or class names your dancer wants — or just their age and we'll help you choose."></textarea>
+          <label>How did you hear about Pacific Dance? *</label>
+          <select required>{hear_opts}</select>
+        </div>
+
+        <div class="fsec">
+          <h3>School policies</h3>
+          <p class="fsub">Please read our studio policies, then confirm below.</p>
+          <div class="legal-box">{school_policies}</div>
+          <label class="agree"><input type="checkbox" required> I agree — I am 18 years old or older, and I have read and accept the School Policies above. *</label>
+        </div>
+
+        <div class="fsec">
+          <h3>Waiver / release from liability &amp; tuition autopay</h3>
+          <p class="fsub">Please read the full waiver and autopay agreement, then confirm below.</p>
+          <div class="legal-box">{waiver}</div>
+          <label class="agree"><input type="checkbox" required> I agree — I am 18 years old or older, and I accept the Waiver / Release from Liability and the Tuition Autopay agreement above. *</label>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Complete Registration</button>
+        <p class="form-note">A $35 registration fee applies. We'll confirm your enrollment and set up Auto Pay with you personally.</p>
+      </form>
+      <div id="reg-done" style="display:none; text-align:center; padding:26px 10px">
+        <div style="font-size:2rem">🎉</div>
+        <h3 style="font-size:1.4rem; margin-top:8px">You're registered!</h3>
+        <p style="margin-top:10px; color:#24405e">Thanks — we've got your registration. Lori or a team member will reach out within a day or two to confirm your classes and set up Auto Pay. Welcome to Pacific Dance!</p>
+        <p style="margin-top:14px"><a href="classes.html" style="color:var(--royal); font-weight:600">Browse the schedule →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+""" + cta_band("Not sure yet?", "Start with a free class — no card, no commitment. Register whenever your dancer's ready.") + FOOTER
+
 PAGES = {
     'index.html': homepage,
     'classes.html': classes_page,
     'classes-doc.html': classes_doc_page,
+    'how-to-enroll.html': how_to_enroll_page,
     'enroll.html': enroll_page,
     'about.html': about_page,
     'performing-groups.html': pg_page,
