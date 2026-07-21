@@ -128,6 +128,11 @@ def cta_band(h="The first class is free.", p="Tell us a little about your dancer
 </section>
 """
 
+def personal_help():
+    return """<div class="help-line">
+      <b>We'd love to help you personally.</b> The best fit for a dancer usually starts with a quick conversation — so we can match yours to the right class for their age, level, and needs. New students can try <b>one free class</b>, and we welcome students <b>year-round</b> (start after the first week of the month and we'll pro-rate your tuition). Call <a href="tel:+17147311108">714-731-1108</a> or email <a href="mailto:info@pacificdance.net">info@pacificdance.net</a> for class availability — we look forward to working with you!
+    </div>"""
+
 # ============================================================ CLASSES
 SCHEDULE = [
     # (class, level_note, ages, styles, [(day, time), ...])
@@ -262,7 +267,11 @@ def enroll_page():
         "The first class is free",
         "That's usually all it takes. Tell us a little about your dancer, and Lori will personally help you find the right class — no commitment, no card.",
         bg="../assets/img/ba-studio-after.jpg", bg_alt="Inside one of Pacific Dance's ten studios",
-    ) + f"""
+    ) + """
+<section class="block" style="padding-bottom:0">
+  <div class="wrap" style="max-width:760px">""" + personal_help() + """</div>
+</section>
+""" + f"""
 <section class="block">
   <div class="wrap twocol form-first">
     <div>
@@ -949,11 +958,7 @@ def how_to_enroll_page():
       <div class="step"><span class="stepn">3</span><h4>Set up autopay &amp; dance</h4><p>We'll set up monthly Auto Pay together and get your dancer on the schedule. We accept students year-round.</p></div>
     </div>
 
-    <div class="help-line">
-      <b>Prefer a hand?</b> We're glad to walk you through it personally — that's how we find the best fit for your dancer.
-      Call <a href="tel:+17147311108">714-731-1108</a> or email <a href="mailto:info@pacificdance.net">info@pacificdance.net</a>.
-      Enroll after the first week of the month and we'll pro-rate your tuition.
-    </div>
+    """ + personal_help() + """
 
     <div class="formcard" id="registration" style="margin-top:30px">
       <h3 style="font-size:1.5rem">Registration Form</h3>
