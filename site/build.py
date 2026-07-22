@@ -319,14 +319,14 @@ def enroll_page():
     <div class="twocol">
       <div class="card-p">
         <div class="feehead">Monthly tuition · effective Jan 1, 2026</div>
-        <p class="feeline"><b>1 class per week</b> — $95/mo <span class="perclass">$95/class</span></p>
-        <p class="feeline"><b>2 classes per week</b> — $180/mo <span class="perclass">$90/class</span></p>
-        <p class="feeline"><b>3 classes per week</b> — $230/mo <span class="perclass">~$77/class</span></p>
-        <p class="feeline"><b>4 classes per week</b> — $280/mo <span class="perclass">$70/class</span></p>
-        <p class="feeline"><b>5 classes per week</b> — $310/mo <span class="perclass">$62/class</span></p>
-        <p class="feeline"><b>6 classes per week</b> — $335/mo <span class="perclass">~$56/class</span></p>
-        <p class="feeline"><b>7 classes per week</b> — $360/mo <span class="perclass">~$51/class</span></p>
-        <p class="feeline"><b>8 classes per week</b> — $385/mo <span class="perclass">~$48/class</span></p>
+        <p class="feeline"><b>1 class per week</b> — $95/mo ($95 per class)</p>
+        <p class="feeline"><b>2 classes per week</b> — $180/mo ($90 per class)</p>
+        <p class="feeline"><b>3 classes per week</b> — $230/mo (~$77 per class)</p>
+        <p class="feeline"><b>4 classes per week</b> — $280/mo ($70 per class)</p>
+        <p class="feeline"><b>5 classes per week</b> — $310/mo ($62 per class)</p>
+        <p class="feeline"><b>6 classes per week</b> — $335/mo (~$56 per class)</p>
+        <p class="feeline"><b>7 classes per week</b> — $360/mo (~$51 per class)</p>
+        <p class="feeline"><b>8 classes per week</b> — $385/mo (~$48 per class)</p>
         <p class="feeline"><b>Each additional class</b> — +$25/mo</p>
       </div>
       <div class="card-p">
