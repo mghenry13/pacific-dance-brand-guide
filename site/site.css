@@ -376,3 +376,8 @@ details.acc .inner li { margin-bottom: 6px; }
   .steps3 { grid-template-columns: 1fr; }
   .frow, .frow.thirds { grid-template-columns: 1fr; }
 }
+
+/* per-class value pill on tuition tiers */
+.perclass { display: inline-block; margin-left: 4px; font-size: .74rem; font-weight: 700;
+  color: var(--royal); background: rgba(0,168,229,.11); border-radius: 999px; padding: .12rem .55rem;
+  vertical-align: middle; white-space: nowrap; }
